@@ -1,0 +1,55 @@
+.c-hamburger {
+  display: none;
+  position: relative;
+  width: rem(60);
+  height: rem(60);
+  cursor: pointer;
+  transition: transform 0.3s;
+  @include mq(md) {
+    display: block;
+  }
+}
+
+.c-hamburger__top,
+.c-hamburger__center,
+.c-hamburger__bottom {
+  position: relative;
+  display: block;
+  width: 20px;
+  height: 2px;
+  margin-right: auto;
+  margin-left: auto;
+  transition: all 0.3s;
+  border-radius: 5px;
+  background-color: $black;
+}
+
+.c-hamburger__top {
+  top: 0;
+}
+
+.c-hamburger__center {
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+.c-hamburger__bottom {
+  top: 0;
+}
+
+// is-open時の動き
+.c-hamburger.is-open .c-hamburger__top {
+  top: 8px;
+  transform: rotate(-45deg);
+  background-color: $black;
+}
+
+.c-hamburger.is-open .c-hamburger__center {
+  opacity: 0;
+}
+
+.c-hamburger.is-open .c-hamburger__bottom {
+  top: -8px;
+  transform: rotate(45deg);
+  background-color: $black;
+}

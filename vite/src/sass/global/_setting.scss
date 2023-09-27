@@ -1,0 +1,52 @@
+@use "sass:math";
+
+// 余白
+$padding-pc: 25px;
+$padding-sp: 20px;
+
+// インナー幅
+$inner-main: 1280px;
+$inner-md: 1120px;
+$inner-sm: 960px;
+$inner-xs: 880px;
+
+// フォント
+$f-main: YuGothic, "游ゴシック体", "游ゴシック Medium", "Yu Gothic Medium",
+  "游ゴシック", "Yu Gothic", sans-serif;
+$f-sub1: "Noto Sans JP", sans-serif;
+
+// フォントウェイト
+$regular: 400;
+$medium: 500;
+$semibold: 600;
+$bold: 700;
+
+// 色指定
+$black: #1a1a1a;
+$white: #fff;
+
+// ブレイクポイント
+$breakpoints: (
+  xs: 450,
+  sm: 600,
+  md: 767,
+  lg: 1024,
+  xl: 1440
+);
+
+// メディアクエリ
+$mediaquerys: (
+  xs: "screen and (max-width: #{map-get($breakpoints,'xs')}px)",
+  sm: "screen and (max-width: #{map-get($breakpoints,'sm')}px)",
+  md: "screen and (max-width: #{map-get($breakpoints,'md')}px)",
+  lg: "screen and (max-width: #{map-get($breakpoints,'lg')}px)",
+  xl: "screen and (max-width: #{map-get($breakpoints,'xl')}px)"
+);
+
+// z-index
+$layer: (
+  header: 100,
+  drawer: 90,
+  pagetop: 30,
+  default: 1
+);

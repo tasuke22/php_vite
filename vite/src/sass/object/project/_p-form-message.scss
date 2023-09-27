@@ -1,0 +1,27 @@
+.p-form-message {
+}
+
+.message_inline {
+  padding: rem(8) rem(12);
+}
+
+.p-form-message__text {
+  position: relative;
+  margin-top: rem(16);
+  margin-bottom: rem(16);
+  padding: rem(12) rem(20);
+  border-radius: rem(8);
+  font-size: rem(18);
+  font-weight: bold;
+  letter-spacing: 0.02em;
+}
+
+.p-form-message__error {
+  color: #772b35;
+  background-color: #fadddd;
+}
+
+.p-form-message__success {
+  color: #18603a;
+  background-color: #d5f1de;
+}

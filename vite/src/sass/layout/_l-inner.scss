@@ -1,0 +1,15 @@
+.l-inner {
+  @include inner($inner-main);
+}
+
+.l-inner-md {
+  @include inner($inner-md);
+}
+
+.l-inner-sm {
+  @include inner($inner-sm);
+}
+
+.l-inner-xs {
+  @include inner($inner-xs);
+}

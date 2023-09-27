@@ -1,0 +1,22 @@
+@use "sass:math";
+
+// pxからremへの計算式
+// 例：rem(32) → 3.2rem
+@function rem($pixels) {
+  @return math.div($pixels, 10) * 1rem;
+}
+
+// 数値のみを取り出す
+// 例：strip-unit(10px) → 10
+@function strip-unit($number) {
+  @if type-of($number) == "number" and not unitless($number) {
+    @return math.div($number, $number * 0 + 1);
+  }
+  @return $number;
+}
+
+// フォントサイズ ÷ 画面幅 * 100vw の計算
+// 例：vw(1250px, 10px) → 10px ÷ 1250px × 100vw
+@function vw($window_width, $size) {
+  @return math.div($size, $window_width) * 100vw;
+}

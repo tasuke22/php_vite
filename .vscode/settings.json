@@ -1,0 +1,9 @@
+{
+  // "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  // "[php]": {
+  //   "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+  // },
+  "files.autoSave": "afterDelay",
+  // "commentTranslate.source": "Google"
+}

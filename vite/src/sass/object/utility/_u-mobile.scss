@@ -1,0 +1,6 @@
+.u-mobile {
+  display: none;
+  @include mq(md) {
+    display: inline-block;
+  }
+}

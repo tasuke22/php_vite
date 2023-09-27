@@ -1,0 +1,40 @@
+@use "sass:math";
+@use "function.scss";
+@use "setting.scss";
+
+// インナー
+@mixin inner($max-inner) {
+  width: 100%;
+  margin-inline: auto;
+  max-width: rem(strip-unit($max-inner + $padding-pc * 2));
+  padding-inline: rem(strip-unit($padding-pc));
+  @include mq(md) {
+    max-width: rem(600);
+    padding-inline: rem(strip-unit($padding-sp));
+  }
+}
+
+// メディアクエリを "@include mq(){}" で書くことができる
+@mixin mq($mediaquery: md) {
+  @media #{map-get($mediaquerys, $mediaquery)} {
+    @content;
+  }
+}
+
+// ＠include font(ファミリー,サイズ, 太さ , 行間, 高さ)
+// @include font($f-main,20, false, 20, 38)
+@mixin font($family, $size, $weight: false, $spacing: false, $height: false) {
+  font-family: $family;
+  font-size: rem(strip-unit($size));
+  // ジャギーが出る場合だけ使う。
+  // transform: rotateZ(0.03deg);
+  @if $weight {
+    font-weight: $weight;
+  }
+  @if $height {
+    line-height: math.div($height, strip-unit($size));
+  }
+  @if $spacing {
+    letter-spacing: math.div($spacing, 1000) * 1em;
+  }
+}
