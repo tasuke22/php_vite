@@ -4,7 +4,7 @@ const VITE_HOST = 'http://localhost:5125';
 function vite(string $entry): string
 {
     return "\n" . jsTag($entry)
-        // . "\n" . jsPreloadImports($entry)
+        . "\n" . jsPreloadImports($entry)
         . "\n" . cssTag($entry);
 }
 
@@ -41,20 +41,20 @@ function jsTag(string $entry): string
         . '"></script>';
 }
 
-// function jsPreloadImports(string $entry): string
-// {
-//     if (isDev($entry)) {
-//         return '';
-//     }
+function jsPreloadImports(string $entry): string
+{
+    if (isDev($entry)) {
+        return '';
+    }
 
-//     $res = '';
-//     foreach (importsUrls($entry) as $url) {
-//         $res .= '<link rel="modulepreload" href="'
-//             . $url
-//             . '">';
-//     }
-//     return $res;
-// }
+    $res = '';
+    foreach (importsUrls($entry) as $url) {
+        $res .= '<link rel="modulepreload" href="'
+            . $url
+            . '">';
+    }
+    return $res;
+}
 
 function cssTag(string $entry): string
 {
@@ -90,18 +90,18 @@ function assetUrl(string $entry): string
         : '';
 }
 
-// function importsUrls(string $entry): array
-// {
-//     $urls = [];
-//     $manifest = getManifest();
+function importsUrls(string $entry): array
+{
+    $urls = [];
+    $manifest = getManifest();
 
-//     if (!empty($manifest[$entry]['imports'])) {
-//         foreach ($manifest[$entry]['imports'] as $imports) {
-//             $urls[] = '/dist/' . $manifest[$imports]['file'];
-//         }
-//     }
-//     return $urls;
-// }
+    if (!empty($manifest[$entry]['imports'])) {
+        foreach ($manifest[$entry]['imports'] as $imports) {
+            $urls[] = '/dist/' . $manifest[$imports]['file'];
+        }
+    }
+    return $urls;
+}
 
 function cssUrls(string $entry): array
 {
