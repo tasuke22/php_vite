@@ -1,8 +1,9 @@
-import { defineConfig, splitVendorChunkPlugin } from "vite";
+import { defineConfig } from "vite";
 import liveReload from "vite-plugin-live-reload";
 import autoprefixer from "autoprefixer";
 import sassGlobImports from "vite-plugin-sass-glob-import";
 import path from "path";
+import viteImagemin from "vite-plugin-imagemin";
 
 export default defineConfig({
   plugins: [
@@ -11,7 +12,27 @@ export default defineConfig({
       __dirname + "/src/js/**/*.js"
     ]),
     sassGlobImports(),
-    splitVendorChunkPlugin()
+    viteImagemin({
+      // 画像圧縮の設定
+      gifsicle: {
+        optimizationLevel: 3
+      },
+      mozjpeg: {
+        quality: 80,
+        progressive: true
+      },
+      pngquant: {
+        quality: [0.8, 0.9],
+        speed: 5
+      },
+      svgo: {
+        plugins: [
+          {
+            name: "removeViewBox"
+          }
+        ]
+      }
+    })
   ],
   root: "",
   base: process.env.NODE_ENV === "development" ? "./" : "/dist/",
@@ -30,6 +51,9 @@ export default defineConfig({
           }
           if (/\.js$/.test(name ?? "")) {
             return "_asset/js/[name].[ext]";
+          }
+          if (/\.( gif|jpeg|jpg|png|svg|webp| )$/.test(name ?? "")) {
+            return "_asset/images/[name].[ext]";
           }
           return "_asset/[name].[ext]";
         }
