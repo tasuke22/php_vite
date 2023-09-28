@@ -10,9 +10,5 @@
     "file": "_asset/js/main.js",
     "isEntry": true,
     "src": "main.js"
-  },
-  "src/images/long.jpg": {
-    "file": "_asset/images/long.jpg",
-    "src": "src/images/long.jpg"
   }
 }
